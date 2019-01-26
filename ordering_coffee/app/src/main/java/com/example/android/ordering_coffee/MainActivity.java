@@ -1,12 +1,10 @@
-package com.example.android.coffee_ordering;
-
+package com.example.android.ordering_coffee;
 
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
 import java.text.NumberFormat;
 
 /**
@@ -25,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(quantity);
-        displayPrice(quantity * 5);
+        //display(quantity);
+        //displayPrice(quantity * 5);
+        String price="TOO EXPNSV";
+        displayMessage(price);
     }
 
     public void increment_it(View view) {
@@ -38,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         quantity = quantity - 1;
         display(quantity);
     }
+
+
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
+    }
+
+
 
     /**
      * This method displays the given quantity value on the screen.
