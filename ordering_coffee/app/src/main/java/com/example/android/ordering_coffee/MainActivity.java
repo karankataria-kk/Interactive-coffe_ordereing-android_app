@@ -25,9 +25,14 @@ public class MainActivity extends AppCompatActivity {
         //display(quantity);
         //displayPrice(quantity * 5);
         displayPrice(quantity);
-        //displayMessage(price);
+        String pricedetail=orderSummary();
+        displayMessage(pricedetail);
     }
-
+    public String orderSummary(){
+        String message="Name : Karan \nTotal cups of coffe : "+quantity+" \nThanks!!";
+        message=message+"\nTotal amount is : "+(quantity*5);
+        return  message;
+    }
     public void increment_it(View view) {
         quantity = quantity + 1;
         display(quantity);
@@ -43,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         displayPrice(quantity);
     }
 
-
-    /**private void displayMessage(String message) {
+    private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(message);
-    }*/
+
+    }
     /**
      * This method displays the given quantity value on the screen.
      */
