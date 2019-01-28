@@ -1,6 +1,5 @@
 package com.example.android.ordering_coffee;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,28 +24,30 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         //display(quantity);
         //displayPrice(quantity * 5);
-        String price="TOO EXPNSV";
-        displayMessage(price);
+        displayPrice(quantity);
+        //displayMessage(price);
     }
 
     public void increment_it(View view) {
         quantity = quantity + 1;
         display(quantity);
+        displayPrice(quantity);
     }
 
     public void decrement_it(View view) {
         quantity = quantity - 1;
+        if (quantity<=0){
+            quantity=0;
+        }
         display(quantity);
+        displayPrice(quantity);
     }
 
 
-    private void displayMessage(String message) {
+    /**private void displayMessage(String message) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(message);
-    }
-
-
-
+    }*/
     /**
      * This method displays the given quantity value on the screen.
      */
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPrice(int number) {
+        int price_updated=number*5;
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        priceTextView.setText(NumberFormat.getCurrencyInstance().format(price_updated));
     }
 }
