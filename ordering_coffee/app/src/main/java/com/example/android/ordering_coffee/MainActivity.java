@@ -3,6 +3,7 @@ package com.example.android.ordering_coffee;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.text.NumberFormat;
 
@@ -17,20 +18,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    int price1=5;
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        //display(quantity);
-        //displayPrice(quantity * 5);
+        CheckBox cream= findViewById(R.id.whip);
+        if (cream.isChecked() && price1==5){
+            price1=price1+1;
+        }
         displayPrice(quantity);
         String pricedetail=orderSummary();
         displayMessage(pricedetail);
     }
     public String orderSummary(){
+        CheckBox cream=findViewById(R.id.whip);
         String message="Name : Karan \nTotal cups of coffe : "+quantity+" \nThanks!!";
-        message=message+"\nTotal amount is : "+(quantity*5);
+        message=message+"\nTotal amount is : "+(quantity*price1);
+        if(cream.isChecked()){
+            message=message+"\nWith Whipped Cream\n";
+        }
         return  message;
     }
     public void increment_it(View view) {
@@ -62,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayPrice(int number) {
-        int price_updated=number*5;
+        int price_updated=number*price1;
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(price_updated));
     }
